@@ -197,6 +197,8 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 
 @implementation RACSignal (RCLGeometryAdditions)
 
+/// zero 系列
+
 + (RACSignal *)zero {
 	return [RACSignal return:@0];
 }
@@ -212,6 +214,8 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 + (RACSignal *)zeroPoint {
 	return [RACSignal return:[NSValue med_valueWithPoint:CGPointZero]];
 }
+
+/// CGRect系列
 
 + (RACSignal *)rectsWithX:(RACSignal *)xSignal Y:(RACSignal *)ySignal width:(RACSignal *)widthSignal height:(RACSignal *)heightSignal {
 	NSParameterAssert(xSignal != nil);
@@ -263,6 +267,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	return [[self rectsWithOrigin:self.zeroPoint size:sizeSignal] setNameWithFormat:@"+rectsWithSize: %@", sizeSignal];
 }
 
+/// self的值类型必须是CGRect
 - (RACSignal *)size {
 	return [[self map:^(NSValue *value) {
 		NSAssert([value isKindOfClass:NSValue.class] && value.med_geometryStructType == MEDGeometryStructTypeRect, @"Value sent by %@ is not a CGRect: %@", self, value);
@@ -271,6 +276,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	}] setNameWithFormat:@"[%@] -size", self.name];
 }
 
+/// 
 - (RACSignal *)replaceSize:(RACSignal *)sizeSignal {
 	return [[self.class rectsWithOrigin:self.origin size:sizeSignal] setNameWithFormat:@"[%@] -replaceSize: %@", self.name, sizeSignal];
 }
@@ -286,7 +292,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 		return MEDBox(CGSizeMake(width.doubleValue, height.doubleValue));
 	}] setNameWithFormat:@"+sizesWithWidth: %@ height: %@", widthSignal, heightSignal];
 }
-
+/// self值类型为CGRect或者CGSize
 - (RACSignal *)width {
 	return [[self map:^(NSValue *value) {
 		if (value.med_geometryStructType == MEDGeometryStructTypeRect) {
@@ -315,7 +321,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 		}
 	}] setNameWithFormat:@"[%@] -replaceWidth: %@", self.name, widthSignal];
 }
-
+/// self值类型为CGRect或者CGSize
 - (RACSignal *)height {
 	return [[self map:^(NSValue *value) {
 		if (value.med_geometryStructType == MEDGeometryStructTypeRect) {
@@ -345,6 +351,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	}] setNameWithFormat:@"[%@] -replaceHeight: %@", self.name, heightSignal];
 }
 
+/// self值类型为CGRect
 - (RACSignal *)origin {
 	return [[self map:^(NSValue *value) {
 		NSAssert([value isKindOfClass:NSValue.class] && value.med_geometryStructType == MEDGeometryStructTypeRect, @"Value sent by %@ is not a CGRect: %@", self, value);

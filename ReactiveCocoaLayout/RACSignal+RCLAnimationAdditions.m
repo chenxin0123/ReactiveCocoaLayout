@@ -1,4 +1,4 @@
-//
+//!
 //  RACSignal+RCLAnimationAdditions.m
 //  ReactiveCocoaLayout
 //
@@ -102,7 +102,7 @@ static RACSignal *animatedSignalsWithDuration (RACSignal *self, NSNumber *durati
 }
 
 @implementation RACSignal (RCLAnimationAdditions)
-
+/// 动画 concat作用 下一个动画等待前一个执行完
 - (RACSignal *)animate {
 	return [[animatedSignalsWithDuration(self, nil, RCLAnimationCurveDefault)
 		concat]
@@ -119,6 +119,7 @@ static RACSignal *animatedSignalsWithDuration (RACSignal *self, NSNumber *durati
 		setNameWithFormat:@"[%@] -animateWithDuration: %@ curve: %li", self.name, @(duration), (long)curve];
 }
 
+/// 下一个动画不等的上一个动画执行完
 - (RACSignal *)animatedSignals {
 	return animatedSignalsWithDuration(self, nil, RCLAnimationCurveDefault);
 }

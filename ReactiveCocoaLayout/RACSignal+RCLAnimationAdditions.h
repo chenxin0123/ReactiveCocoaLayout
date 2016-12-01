@@ -1,4 +1,4 @@
-//
+//!
 //  RACSignal+RCLAnimationAdditions.h
 //  ReactiveCocoaLayout
 //

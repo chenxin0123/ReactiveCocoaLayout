@@ -17,7 +17,7 @@
 		D0513974167F149F00334374 /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0513973167F149F00334374 /* TestView.m */; };
 		D06C9E53167D896000276090 /* RACSignalRCLGeometryAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D06C9E52167D896000276090 /* RACSignalRCLGeometryAdditionsSpec.m */; };
 		D06C9E5B167D8A9A00276090 /* NSViewRCLGeometryAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D06C9E5A167D8A9A00276090 /* NSViewRCLGeometryAdditionsSpec.m */; };
-		D0731B8719FF028F00C01E16 /* ReactiveCocoaLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0731B7C19FF028F00C01E16 /* ReactiveCocoaLayout.framework */; };
+		D0731B8719FF028F00C01E16 /* .framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0731B7C19FF028F00C01E16 /* .framework */; };
 		D0731B9919FF034700C01E16 /* ReactiveCocoaLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BB24811678772C005E9371 /* ReactiveCocoaLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0731B9A19FF03B600C01E16 /* RACSignal+RCLAnimationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D037FEF21696ED02002D0CBA /* RACSignal+RCLAnimationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0731B9B19FF03B600C01E16 /* RACSignal+RCLAnimationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D037FEF31696ED02002D0CBA /* RACSignal+RCLAnimationAdditions.m */; };
@@ -60,7 +60,7 @@
 		D096C51B16917EF30071C6D6 /* NSCellRCLGeometryAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D096C51A16917EF30071C6D6 /* NSCellRCLGeometryAdditionsSpec.m */; };
 		D0BB24751678772C005E9371 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB24741678772C005E9371 /* Cocoa.framework */; };
 		D0BB248C1678772C005E9371 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB24741678772C005E9371 /* Cocoa.framework */; };
-		D0BB248F1678772C005E9371 /* ReactiveCocoaLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB24711678772C005E9371 /* ReactiveCocoaLayout.framework */; };
+		D0BB248F1678772C005E9371 /* .framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB24711678772C005E9371 /* .framework */; };
 		D0BB24DD167879A3005E9371 /* ReactiveCocoaLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BB24811678772C005E9371 /* ReactiveCocoaLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0BB25E01678847A005E9371 /* NSView+RCLGeometryAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BB25DE1678847A005E9371 /* NSView+RCLGeometryAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0BB25E11678847A005E9371 /* NSView+RCLGeometryAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BB25DF1678847A005E9371 /* NSView+RCLGeometryAdditions.m */; };
@@ -69,7 +69,7 @@
 		D0C20EF51736398700115B19 /* RCLMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = D0C20EF41736398700115B19 /* RCLMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0C20EF817363A6500115B19 /* RCLMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C20EF717363A6500115B19 /* RCLMacros.m */; };
 		D0DF007919FF497300698F57 /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0513973167F149F00334374 /* TestView.m */; };
-		D0EB8EBB19FF4E10006FA2D5 /* ReactiveCocoaLayout.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB24711678772C005E9371 /* ReactiveCocoaLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D0EB8EBB19FF4E10006FA2D5 /* .framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB24711678772C005E9371 /* .framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0ED89F416814D800041A188 /* RACSignal+RCLWritingDirectionAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ED89F216814D800041A188 /* RACSignal+RCLWritingDirectionAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0ED89F516814D800041A188 /* RACSignal+RCLWritingDirectionAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ED89F316814D800041A188 /* RACSignal+RCLWritingDirectionAdditions.m */; };
 		D0ED89F8168150030041A188 /* RACSignalRCLWritingDirectionAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ED89F7168150030041A188 /* RACSignalRCLWritingDirectionAdditionsSpec.m */; };
@@ -107,7 +107,7 @@
 				D0731BBC19FF05E900C01E16 /* Quick.framework in Copy Frameworks */,
 				D0731BBD19FF05EB00C01E16 /* ReactiveCocoa.framework in Copy Frameworks */,
 				D0731BBE19FF05ED00C01E16 /* Archimedes.framework in Copy Frameworks */,
-				D0EB8EBB19FF4E10006FA2D5 /* ReactiveCocoaLayout.framework in Copy Frameworks */,
+				D0EB8EBB19FF4E10006FA2D5 /* .framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,7 +130,7 @@
 		D06C9E5D167D8BD900276090 /* UIViewRCLGeometryAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewRCLGeometryAdditionsSpec.m; sourceTree = "<group>"; };
 		D0731B7519FF01B700C01E16 /* Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Framework.xcconfig; path = Carthage/Checkouts/xcconfigs/Base/Targets/Framework.xcconfig; sourceTree = SOURCE_ROOT; };
 		D0731B7619FF01BC00C01E16 /* iOS-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "iOS-Framework.xcconfig"; path = "Carthage/Checkouts/xcconfigs/iOS/iOS-Framework.xcconfig"; sourceTree = SOURCE_ROOT; };
-		D0731B7C19FF028F00C01E16 /* ReactiveCocoaLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveCocoaLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0731B7C19FF028F00C01E16 /* .framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = .framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0731B8619FF028F00C01E16 /* ReactiveCocoaLayout iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ReactiveCocoaLayout iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0731BAA19FF04B300C01E16 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D0731BB419FF05B100C01E16 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,7 +158,7 @@
 		D096C51616917BA60071C6D6 /* NSCell+RCLGeometryAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCell+RCLGeometryAdditions.h"; sourceTree = "<group>"; };
 		D096C51716917BA60071C6D6 /* NSCell+RCLGeometryAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCell+RCLGeometryAdditions.m"; sourceTree = "<group>"; };
 		D096C51A16917EF30071C6D6 /* NSCellRCLGeometryAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCellRCLGeometryAdditionsSpec.m; sourceTree = "<group>"; };
-		D0BB24711678772C005E9371 /* ReactiveCocoaLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveCocoaLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0BB24711678772C005E9371 /* .framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = .framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BB24741678772C005E9371 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D0BB24771678772C005E9371 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		D0BB24791678772C005E9371 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -196,7 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0731B8719FF028F00C01E16 /* ReactiveCocoaLayout.framework in Frameworks */,
+				D0731B8719FF028F00C01E16 /* .framework in Frameworks */,
 				D0731BA919FF03E500C01E16 /* ReactiveCocoa.framework in Frameworks */,
 				D0731BA819FF03E300C01E16 /* Archimedes.framework in Frameworks */,
 				D0731BB919FF05C900C01E16 /* Quick.framework in Frameworks */,
@@ -220,7 +220,7 @@
 			files = (
 				D0731BB519FF05B100C01E16 /* Quick.framework in Frameworks */,
 				D0BB248C1678772C005E9371 /* Cocoa.framework in Frameworks */,
-				D0BB248F1678772C005E9371 /* ReactiveCocoaLayout.framework in Frameworks */,
+				D0BB248F1678772C005E9371 /* .framework in Frameworks */,
 				D0731BB719FF05C400C01E16 /* Nimble.framework in Frameworks */,
 				D4ACA48318DB8F8200EBD899 /* ReactiveCocoa.framework in Frameworks */,
 				D40D7B2818E30C0A0065BB70 /* Archimedes.framework in Frameworks */,
@@ -336,9 +336,9 @@
 		D0BB24721678772C005E9371 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0BB24711678772C005E9371 /* ReactiveCocoaLayout.framework */,
+				D0BB24711678772C005E9371 /* .framework */,
 				D0BB24891678772C005E9371 /* ReactiveCocoaLayout Mac Tests.xctest */,
-				D0731B7C19FF028F00C01E16 /* ReactiveCocoaLayout.framework */,
+				D0731B7C19FF028F00C01E16 /* .framework */,
 				D0731B8619FF028F00C01E16 /* ReactiveCocoaLayout iOS Tests.xctest */,
 			);
 			name = Products;
@@ -496,7 +496,7 @@
 			);
 			name = "ReactiveCocoaLayout iOS";
 			productName = ReactiveCocoaLayout;
-			productReference = D0731B7C19FF028F00C01E16 /* ReactiveCocoaLayout.framework */;
+			productReference = D0731B7C19FF028F00C01E16 /* .framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D0731B8519FF028F00C01E16 /* ReactiveCocoaLayout iOS Tests */ = {
@@ -533,7 +533,7 @@
 			);
 			name = "ReactiveCocoaLayout Mac";
 			productName = ReactiveCocoaLayout;
-			productReference = D0BB24711678772C005E9371 /* ReactiveCocoaLayout.framework */;
+			productReference = D0BB24711678772C005E9371 /* .framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D0BB24881678772C005E9371 /* ReactiveCocoaLayout Mac Tests */ = {
