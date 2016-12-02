@@ -1,4 +1,4 @@
-//
+//!
 //  RACSignal+RCLGeometryAdditions.m
 //  ReactiveCocoaLayout
 //
@@ -13,6 +13,7 @@
 
 // When any signal sends an NSNumber, sorts the latest values from all of them,
 // and sends either the minimum or the maximum.
+// 每次发出的值的最小值或者最大值
 static RACSignal *latestSortedNumber(NSArray *signals, BOOL minimum) {
 	NSCParameterAssert(signals != nil);
 
@@ -42,6 +43,7 @@ typedef CGFloat (^RCLBinaryOperator)(CGFloat, CGFloat);
 
 // Used from combineSignalsWithOperator() to combine two numbers using an
 // arbitrary binary operator.
+// 返回计算结果NSNumber
 static NSNumber *combineNumbersWithOperator(NSNumber *a, NSNumber *b, RCLBinaryOperator operator) {
 	NSCAssert([a isKindOfClass:NSNumber.class], @"Expected a number, not %@", a);
 	NSCAssert([b isKindOfClass:NSNumber.class], @"Expected a number, not %@", b);
@@ -51,6 +53,7 @@ static NSNumber *combineNumbersWithOperator(NSNumber *a, NSNumber *b, RCLBinaryO
 
 // Used from combineSignalsWithOperator() to combine two values using an
 // arbitrary binary operator.
+// value为size或者point
 static NSValue *combineValuesWithOperator(NSValue *a, NSValue *b, RCLBinaryOperator operator) {
 	NSCAssert([a isKindOfClass:NSValue.class], @"Expected a value, not %@", a);
 	NSCAssert([b isKindOfClass:NSValue.class], @"Expected a value, not %@", b);
@@ -87,6 +90,7 @@ static NSValue *combineValuesWithOperator(NSValue *a, NSValue *b, RCLBinaryOpera
 // values of the same type.
 //
 // Returns a signal of results, using the same type as the input values.
+// 一次tuple的所有值依次放入operator计算
 static RACSignal *combineSignalsWithOperator(NSArray *signals, RCLBinaryOperator operator) {
 	NSCParameterAssert(signals != nil);
 	NSCParameterAssert(signals.count > 0);
@@ -276,7 +280,6 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	}] setNameWithFormat:@"[%@] -size", self.name];
 }
 
-/// 
 - (RACSignal *)replaceSize:(RACSignal *)sizeSignal {
 	return [[self.class rectsWithOrigin:self.origin size:sizeSignal] setNameWithFormat:@"[%@] -replaceSize: %@", self.name, sizeSignal];
 }
@@ -408,6 +411,9 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	return [[self.class pointsWithX:self.x Y:ySignal] setNameWithFormat:@"[%@] -replaceY: %@", self.name, ySignal];
 }
 
+/// 自动布局
+
+/// 值类型rect
 - (RACSignal *)valueForAttribute:(NSLayoutAttribute)attribute {
 	return [combineAttributeAndSignals(attribute, @[ self ], ^ id (NSNumber *edge, NSValue *value) {
 		NSAssert([value isKindOfClass:NSValue.class] && value.med_geometryStructType == MEDGeometryStructTypeRect, @"Value sent by %@ is not a CGRect: %@", self, value);
@@ -485,6 +491,8 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	return [[self valueForAttribute:NSLayoutAttributeCenterY] setNameWithFormat:@"[%@] -centerY", self.name];
 }
 
+/// 对应的属性设为valueSignal
+/// self值类型rect
 - (RACSignal *)alignAttribute:(NSLayoutAttribute)attribute to:(RACSignal *)valueSignal {
 	NSParameterAssert(valueSignal != nil);
 
@@ -545,6 +553,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	}) setNameWithFormat:@"[%@] -alignAttribute: %li to: %@", self.name, (long)attribute, valueSignal];
 }
 
+/// 值类型rect centerSignal值类型point
 - (RACSignal *)alignCenter:(RACSignal *)centerSignal {
 	NSParameterAssert(centerSignal != nil);
 
@@ -600,6 +609,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	return [[self alignAttribute:NSLayoutAttributeCenterY to:positionSignal] setNameWithFormat:@"[%@] -alignCenterY: %@", self.name, positionSignal];
 }
 
+/// 
 - (RACSignal *)alignBaseline:(RACSignal *)baselineSignal toBaseline:(RACSignal *)referenceBaselineSignal ofRect:(RACSignal *)referenceRectSignal {
 	NSParameterAssert(baselineSignal != nil);
 	NSParameterAssert(referenceBaselineSignal != nil);
@@ -642,7 +652,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	NSParameterAssert(insetSignal != nil);
 	
 	return [[RACSignal combineLatest:@[ insetSignal, self ] reduce:^(NSValue *insets, NSValue *rect) {
-		NSAssert([insets isKindOfClass:NSValue.class] && insets.med_geometryStructType == MEDGeometryStructTypeEdgeInsets, @"Value sent by %@ is not an MEDEdgeInsets: %@", self, insets);
+		NSAssert([insets isKindOfClass:NSValue.class] && insets.med_geometryStructType == MEDGeometryStructTypeEdgeIns  1ets, @"Value sent by %@ is not an MEDEdgeInsets: %@", self, insets);
 		NSAssert([rect isKindOfClass:NSValue.class] && rect.med_geometryStructType == MEDGeometryStructTypeRect, @"Value sent by %@ is not a CGRect: %@", self, rect);
 		
 		CGRect insetRect = MEDEdgeInsetsInsetRect(rect.med_rectValue, insets.med_edgeInsetsValue);
@@ -686,6 +696,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	return [[self insetBy:insets nullRect:nullRect] setNameWithFormat:@"[%@] -insetTop: %@ left: %@ bottom: %@ right: %@", self.name, topSignal, leftSignal, bottomSignal, rightSignal];
 }
 
+/// point或者rect origing根据edgeAttribute移动
 - (RACSignal *)offsetByAmount:(RACSignal *)amountSignal towardEdge:(NSLayoutAttribute)edgeAttribute {
 	NSParameterAssert(amountSignal != nil);
 
@@ -764,6 +775,9 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	return [[self offsetByAmount:amountSignal towardEdge:NSLayoutAttributeTrailing] setNameWithFormat:@"[%@] -moveTrailingOutward: %@", self.name, amountSignal];
 }
 
+
+/// rect
+/// 宽高的话往两边扩张
 - (RACSignal *)extendAttribute:(NSLayoutAttribute)attribute byAmount:(RACSignal *)amountSignal {
 	NSParameterAssert(amountSignal != nil);
 
@@ -810,6 +824,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	return [self divideWithAmount:sliceAmountSignal padding:[RACSignal return:@0] fromEdge:edgeAttribute];
 }
 
+/// 分割
 - (RACTuple *)divideWithAmount:(RACSignal *)amountSignal padding:(RACSignal *)paddingSignal fromEdge:(NSLayoutAttribute)edgeAttribute {
 	NSParameterAssert(amountSignal != nil);
 	NSParameterAssert(paddingSignal != nil);
@@ -907,6 +922,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	}) setNameWithFormat:@"[%@] -dividedBy: %@", self, denominatorSignal];
 }
 
+/// number rect point size 所有字段变成负数包括宽高
 - (RACSignal *)negate {
 	return [[self map:^ id (id value) {
 		if ([value isKindOfClass:NSNumber.class]) {
@@ -946,6 +962,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	}] setNameWithFormat:@"[%@] -negate", self.name];
 }
 
+/// number rect point size
 - (RACSignal *)floor {
 	return [[self map:^ id (id value) {
 		if ([value isKindOfClass:NSNumber.class]) {
@@ -975,6 +992,7 @@ static RACSignal *combineAttributeAndSignals(NSLayoutAttribute attribute, NSArra
 	}] setNameWithFormat:@"[%@] -floor", self.name];
 }
 
+/// number rect point size
 - (RACSignal *)ceil {
 	return [[self map:^ id (id value) {
 		if ([value isKindOfClass:NSNumber.class]) {

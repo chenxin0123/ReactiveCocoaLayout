@@ -72,15 +72,19 @@ static NSString *NSStringFromRCLAttribute(RCLAttribute attribute) __attribute__(
 
 #pragma mark Attribute Parsing
 
+/// bindings key为RCLAttributeRect 值为RACSignal或者值对应的value、number类型
+///
 - (RACSignal *)rectSignalFromBindings:(NSDictionary *)bindings {
 	NSParameterAssert(bindings != nil);
 
+    /// key升序
 	NSArray *sortedAttributes = [bindings.allKeys sortedArrayUsingSelector:@selector(compare:)];
 
 	RACSignal *signal = [self.view rcl_intrinsicBoundsSignal];
 	for (NSNumber *attribute in sortedAttributes) {
 		NSAssert([attribute isKindOfClass:NSNumber.class], @"Layout binding key is not a RCLAttribute: %@", attribute);
 
+        // 值类型创建一个信号
 		RACSignal *value = bindings[attribute];
 		if (![value isKindOfClass:RACSignal.class]) {
 			value = [self signalWithConstantValue:value forAttribute:attribute.integerValue];
@@ -167,6 +171,7 @@ static NSString *NSStringFromRCLAttribute(RCLAttribute attribute) __attribute__(
 	return signal;
 }
 
+/// 验证[RACSignal return:value]
 - (RACSignal *)signalWithConstantValue:(id)value forAttribute:(RCLAttribute)attribute {
 	NSParameterAssert(value != nil);
 

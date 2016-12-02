@@ -1,4 +1,4 @@
-//
+//!
 //  UIView+RCLGeometryAdditions.h
 //  ReactiveCocoaLayout
 //

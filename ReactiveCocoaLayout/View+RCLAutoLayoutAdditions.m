@@ -1,4 +1,4 @@
-//
+//!
 //  View+RCLAutoLayoutAdditions.m
 //  ReactiveCocoaLayout
 //
@@ -23,6 +23,7 @@
 // -invalidateIntrinsicContentSize is invoked.
 static void *IntrinsicContentSizeSubjectKey = &IntrinsicContentSizeSubjectKey;
 
+/// invalidateIntrinsicContentSize hook
 static void (*oldInvalidateIntrinsicContentSize)(id, SEL);
 static void newInvalidateIntrinsicContentSize(id self, SEL _cmd) {
 	oldInvalidateIntrinsicContentSize(self, _cmd);
@@ -53,6 +54,7 @@ static void newInvalidateIntrinsicContentSize(id self, SEL _cmd) {
 
 #pragma mark Signals
 
+/// 创建一个RACReplaySubject 这个RACReplaySubject会在invalidateIntrinsicContentSize中sendnext:[self intrinsicContentSize]
 - (RACSignal *)rcl_intrinsicContentSizeSignal {
 	RACSubject *subject = objc_getAssociatedObject(self, IntrinsicContentSizeSubjectKey);
 	if (subject == nil) {
